@@ -1,0 +1,36 @@
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /market
+
+spring:
+  profiles:
+    default: test
+
+#메일 보내기
+---
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    properties:
+      mail:
+        smtp.auth: true
+        smtp.timeout: 50000
+        smtp.starttls.enable: true
+
+---
+spring:
+  mail:
+    username: ${SMTP_EMAIL:tkstjd565@gmail.com}
+    password: ${SMTP_PASSWORD:divulyesuhsmefzs}
+
+#이미지 업로드
+---
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+
