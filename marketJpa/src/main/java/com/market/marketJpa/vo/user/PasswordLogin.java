@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -29,4 +30,10 @@ public class PasswordLogin extends AuditingEntity {
     @OneToOne
     @JoinColumn(name = USER_ID)
     private Users users;
+
+    @Builder
+    public PasswordLogin(String password, Users users) {
+        this.password = password;
+        this.users = users;
+    }
 }
