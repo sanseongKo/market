@@ -32,6 +32,7 @@ public class UserService {
     private final SocialLoginRepository socialLoginRepository;
     private final PasswordLoginRepository passwordLoginRepository;
 
+    //TODO(전략 패턴 고려)
     @Transactional
     public UUID signUp(SocialSignUpServiceRequest request) {
         validateExistUser(request.getEmail());
