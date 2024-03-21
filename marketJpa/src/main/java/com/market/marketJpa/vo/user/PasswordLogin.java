@@ -31,9 +31,12 @@ public class PasswordLogin extends AuditingEntity {
     @JoinColumn(name = USER_ID)
     private Users users;
 
+    private String salt;
+
     @Builder
-    public PasswordLogin(String password, Users users) {
+    public PasswordLogin(String password, Users users, String salt) {
         this.password = password;
         this.users = users;
+        this.salt = salt;
     }
 }
