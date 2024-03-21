@@ -7,10 +7,11 @@ import java.security.SecureRandom;
 @Component
 public class PasswordSaltValueGenerator {
     private static final String FORMAT = "%02x";
+    private static final int ARRAY_LENGTH = 20;
 
     public String getSalt() {
         SecureRandom sRandom = new SecureRandom();
-        byte[] salt = new byte[20];
+        byte[] salt = new byte[ARRAY_LENGTH];
 
         sRandom.nextBytes(salt);
 
