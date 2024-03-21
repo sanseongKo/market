@@ -1,5 +1,6 @@
 package com.market.marketJpa.config.mail;
 
+import com.market.marketJpa.service.mail.generator.MailAuthenticationCodeGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

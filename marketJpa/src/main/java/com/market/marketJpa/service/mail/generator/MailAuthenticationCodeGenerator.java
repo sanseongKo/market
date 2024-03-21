@@ -1,4 +1,4 @@
-package com.market.marketJpa.config.mail;
+package com.market.marketJpa.service.mail.generator;
 
 import org.springframework.stereotype.Component;
 

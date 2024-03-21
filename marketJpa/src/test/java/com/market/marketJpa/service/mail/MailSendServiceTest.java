@@ -1,17 +1,13 @@
 package com.market.marketJpa.service.mail;
 
-import com.market.marketJpa.config.mail.MailAuthenticationCodeGenerator;
-import com.market.marketJpa.controller.mail.request.SendAuthenticationCodeRequest;
+import com.market.marketJpa.service.mail.generator.MailAuthenticationCodeGenerator;
 import com.market.marketJpa.repository.user.EmailAuthenticationRepository;
-import com.market.marketJpa.service.constant.ConstantValue;
 import com.market.marketJpa.service.mail.request.MailAuthenticationCodeRequest;
 import com.market.marketJpa.service.mail.response.MailAuthenticationCodeResponse;
 import jakarta.mail.MessagingException;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;

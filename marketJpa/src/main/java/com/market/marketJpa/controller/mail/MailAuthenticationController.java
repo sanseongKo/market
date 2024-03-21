@@ -1,11 +1,10 @@
 package com.market.marketJpa.controller.mail;
 
-import com.market.marketJpa.config.mail.MailAuthenticationCodeGenerator;
+import com.market.marketJpa.service.mail.generator.MailAuthenticationCodeGenerator;
 import com.market.marketJpa.controller.mail.request.SendAuthenticationCodeRequest;
 import com.market.marketJpa.service.mail.MailSendService;
 
 import com.market.marketJpa.service.mail.response.MailAuthenticationCodeResponse;
-import com.market.marketJpa.vo.ResponseResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,7 +1,7 @@
 package com.market.marketJpa.controller.mail;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.market.marketJpa.config.mail.MailAuthenticationCodeGenerator;
+import com.market.marketJpa.service.mail.generator.MailAuthenticationCodeGenerator;
 import com.market.marketJpa.controller.mail.request.SendAuthenticationCodeRequest;
 import com.market.marketJpa.service.mail.MailSendService;
 import com.market.marketJpa.service.mail.response.MailAuthenticationCodeResponse;
