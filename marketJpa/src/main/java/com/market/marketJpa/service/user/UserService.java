@@ -44,7 +44,7 @@ public class UserService {
         userProfileRepository.save(request.toUserProfileEntity(user, image));
         socialLoginRepository.save(request.toSocialLoginEntity(user));
 
-        return user.getVerifiedId();
+        return user.getUserId();
     }
 
     @Transactional
@@ -57,7 +57,7 @@ public class UserService {
         userProfileRepository.save(request.toUserProfileEntity(users, image));
         passwordLoginService.signUpBy(request.getPassword(), users);
 
-        return users.getVerifiedId();
+        return users.getUserId();
     }
 
     private Image createImage(MultipartFile image) {
