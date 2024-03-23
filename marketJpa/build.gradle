@@ -34,14 +34,10 @@ dependencies {
 	implementation 'com.querydsl:querydsl-jpa:5.0.0'
 
 	//mysql
-	runtimeOnly 'com.mysql:mysql-connector-j:8.0.33'
+	runtimeOnly 'com.mysql:mysql-connector-j'
 
 	//h2
 	runtimeOnly 'com.h2database:h2'
-
-	//jdbc
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	implementation 'org.mariadb.jdbc:mariadb-java-client:3.3.2'
 
 	//lombok
 	compileOnly 'org.projectlombok:lombok'
