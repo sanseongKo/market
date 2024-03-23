@@ -7,6 +7,7 @@ import com.market.marketJpa.repository.user.SocialLoginRepository;
 import com.market.marketJpa.repository.user.UserProfileRepository;
 import com.market.marketJpa.repository.user.UsersRepository;
 import com.market.marketJpa.service.image.ImageService;
+import com.market.marketJpa.service.password.PasswordLoginService;
 import com.market.marketJpa.service.user.request.PasswordSignUpServiceRequest;
 import com.market.marketJpa.service.user.request.SocialSignUpServiceRequest;
 import com.market.marketJpa.vo.image.Image;
@@ -30,7 +31,7 @@ public class UserService {
     private final ImageService imageService;
     private final UserProfileRepository userProfileRepository;
     private final SocialLoginRepository socialLoginRepository;
-    private final PasswordLoginRepository passwordLoginRepository;
+    private final PasswordLoginService passwordLoginService;
 
     //TODO(전략 패턴 고려)
     @Transactional
@@ -54,7 +55,7 @@ public class UserService {
 
         Users users = usersRepository.save(request.toUsersEntity());
         userProfileRepository.save(request.toUserProfileEntity(users, image));
-        passwordLoginRepository.save(request.toPasswordLoginEntity(users));
+        passwordLoginService.signUpBy(request.getPassword(), users);
 
         return users.getVerifiedId();
     }
