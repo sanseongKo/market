@@ -18,7 +18,7 @@ public class PasswordLoginService {
     private final PasswordLoginRepository passwordLoginRepository;
     private final PasswordSaltValueGenerator generator;
 
-    public void signUpBy(String password, Users users) throws NoSuchAlgorithmException {
+    public void signUpBy(String password, Users users) {
         String salt = generator.getSalt();
 
         String encryptedPassword = passwordEncryptClient.encryptBy(password, salt);
