@@ -19,7 +19,7 @@ import static com.market.marketJpa.vo.constant.ConstantValue.USER_ID;
 public class Users extends AuditingEntity {
 
     @Id
-    private UUID verifiedId;
+    private UUID userId;
 
     @Column(unique = true)
     private String email;
@@ -29,7 +29,7 @@ public class Users extends AuditingEntity {
 
     @Builder
     public Users (String email, SignUpType signUpType) {
-        this.verifiedId = UUID.randomUUID();
+        this.userId = UUID.randomUUID();
         this.email = email;
         this.signUpType = signUpType;
     }
