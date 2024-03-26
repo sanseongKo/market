@@ -2,10 +2,14 @@ package com.market.marketJpa.service.user;
 
 import com.market.marketJpa.error.BusinessException;
 import com.market.marketJpa.error.ErrorCode;
+import com.market.marketJpa.repository.user.PasswordLoginRepository;
 import com.market.marketJpa.repository.user.SocialLoginRepository;
 import com.market.marketJpa.repository.user.UserProfileRepository;
 import com.market.marketJpa.repository.user.UsersRepository;
+import com.market.marketJpa.service.password.PasswordEncryptClient;
+import com.market.marketJpa.service.user.request.PasswordSignUpServiceRequest;
 import com.market.marketJpa.service.user.request.SocialSignUpServiceRequest;
+import com.market.marketJpa.vo.user.PasswordLogin;
 import com.market.marketJpa.vo.user.SocialLogin;
 import com.market.marketJpa.vo.user.UserProfile;
 import com.market.marketJpa.vo.user.Users;
@@ -36,11 +40,16 @@ class UserServiceTest {
     private SocialLoginRepository socialLoginRepository;
     @Autowired
     private UserService userService;
+    @Autowired
+    private PasswordLoginRepository passwordLoginRepository;
+    @Autowired
+    private PasswordEncryptClient passwordEncryptClient;
 
     @AfterEach
     void tearDown() {
         userProfileRepository.deleteAllInBatch();
         socialLoginRepository.deleteAllInBatch();
+        passwordLoginRepository.deleteAllInBatch();
         usersRepository.deleteAllInBatch();
     }
 
@@ -89,6 +98,42 @@ class UserServiceTest {
                 .platformName("google")
                 .nickname("nickname")
                 .phoneNumber("010-0100-0111")
+                .build();
+    }
+
+    @DisplayName("패스워드로 회원 가입하면 회원 정보가 저장된다.")
+    @Test
+    void signUpWithPassword() {
+        //given
+        PasswordSignUpServiceRequest request = createPasswordServiceRequest();
+
+        //when
+        UUID userId = userService.signUp(request);
+
+        Users users = usersRepository.findById(userId).orElseThrow();
+        PasswordLogin passwordLogin = passwordLoginRepository.findByUser(users);
+        UserProfile userProfile = userProfileRepository.findByUser(users);
+
+        //then
+        String salt = passwordLogin.getSalt();
+        String encryptedPassword = passwordEncryptClient.encryptBy(request.getPassword(), salt);
+
+        assertThat(users).extracting("email").isEqualTo("asd@asd.com");
+        assertThat(passwordLogin).extracting("password").isEqualTo(encryptedPassword);
+        assertThat(userProfile).extracting("phoneNumber").isEqualTo("010-0100-0111");
+    }
+
+    private PasswordSignUpServiceRequest createPasswordServiceRequest() {
+        return PasswordSignUpServiceRequest.builder()
+                .name("test")
+                .email("asd@asd.com")
+                .gu("구")
+                .city("서울")
+                .dong("동")
+                .birth(LocalDate.now())
+                .nickname("nickname")
+                .phoneNumber("010-0100-0111")
+                .password("sadfadsf")
                 .build();
     }
 }
