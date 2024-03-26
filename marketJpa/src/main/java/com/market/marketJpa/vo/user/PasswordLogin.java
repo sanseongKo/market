@@ -29,14 +29,14 @@ public class PasswordLogin extends AuditingEntity {
 
     @OneToOne
     @JoinColumn(name = USER_ID)
-    private Users users;
+    private Users user;
 
     private String salt;
 
     @Builder
     public PasswordLogin(String password, Users users, String salt) {
         this.password = password;
-        this.users = users;
+        this.user = users;
         this.salt = salt;
     }
 }
