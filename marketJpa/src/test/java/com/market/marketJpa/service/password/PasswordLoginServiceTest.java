@@ -7,7 +7,6 @@ import com.market.marketJpa.service.password.generator.PasswordSaltValueGenerato
 import com.market.marketJpa.vo.user.PasswordLogin;
 import com.market.marketJpa.vo.user.SignUpType;
 import com.market.marketJpa.vo.user.Users;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

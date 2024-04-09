@@ -2,7 +2,6 @@ package com.market.marketJpa.service.user;
 
 import com.market.marketJpa.error.BusinessException;
 import com.market.marketJpa.error.ErrorCode;
-import com.market.marketJpa.repository.user.PasswordLoginRepository;
 import com.market.marketJpa.repository.user.SocialLoginRepository;
 import com.market.marketJpa.repository.user.UserProfileRepository;
 import com.market.marketJpa.repository.user.UsersRepository;
@@ -14,7 +13,6 @@ import com.market.marketJpa.vo.image.Image;
 import com.market.marketJpa.vo.user.Users;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
