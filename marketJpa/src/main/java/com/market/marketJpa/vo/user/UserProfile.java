@@ -33,6 +33,12 @@ public class UserProfile extends AuditingEntity {
 
     private LocalDate birth;
 
+    private Long point;
+
+    private boolean tradeChatStatus;
+
+    private boolean noticeStatus;
+
     @Column(unique = true)
     private String phoneNumber;
 
@@ -45,9 +51,9 @@ public class UserProfile extends AuditingEntity {
 
     @OneToOne
     @JoinColumn(name = IMAGE_ID)
-    private Image Image;
+    private Image image;
 
-    @OneToMany(mappedBy = USER_PRODUCT_MAPPER)
+    @OneToMany(mappedBy = USER_PRODUCT_MAPPER, fetch = FetchType.LAZY)
     private List<UserProductMapper> productMappers;
 
     @Builder
@@ -61,6 +67,6 @@ public class UserProfile extends AuditingEntity {
         this.nickname = nickname;
         this.user = users;
         this.productMappers = new LinkedList<>();
-        Image = image;
+        this.image = image;
     }
 }
