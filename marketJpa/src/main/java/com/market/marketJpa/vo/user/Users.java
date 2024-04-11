@@ -27,6 +27,8 @@ public class Users extends AuditingEntity {
     @Enumerated(EnumType.STRING)
     private SignUpType signUpType;
 
+    private boolean registeredEmailStatus;
+
     @Builder
     public Users (String email, SignUpType signUpType) {
         this.userId = UUID.randomUUID();
